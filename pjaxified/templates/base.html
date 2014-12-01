@@ -36,7 +36,17 @@
         <style rel="stylesheet" type="text/less">
             body { 
                 background: lighten(aqua, 48%) !important; 
-                padding: 10px;
+            }
+            
+            #header {
+                background: grey;
+                line-height: 70px;
+                font-size: 20px;
+                
+            }
+            
+            #pjax-container {
+                padding: 1.5em;
             }
         </style>
         {% endcompress %}
@@ -45,13 +55,15 @@
     <body>
        
         <div id="header"> 
-            <p>welcome...</p>
-            <ul>
-                <li><a data-pjax href="/">Example</a></li>
-                <li><a data-pjax href="/test/">Test</a></li>
-            </ul>
+            <div>
+                <p>welcome...</p>
+            </div>
         </div>
         
+        <ul>
+            <li><a data-pjax href="/">Example</a></li>
+            <li><a data-pjax href="/test/">Test</a></li>
+        </ul>
         
         <!-- all pjax content will render inside of this id -->
         <div id="pjax-container">
