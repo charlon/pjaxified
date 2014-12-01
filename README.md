@@ -1,4 +1,4 @@
-Projectname
+PJAXified
 ===========
 
 This README documents whatever steps are necessary to get your application up and running.
@@ -7,8 +7,8 @@ This README documents whatever steps are necessary to get your application up an
 
 **Create and activate your virtual environment**
     
-    $ virtualenv [projectenv]
-    $ cd [projectenv]
+    $ virtualenv pjaxifiedenv
+    $ cd pjaxifiedenv
     $ source bin/activate
 
 **Install Node**
@@ -21,20 +21,20 @@ This README documents whatever steps are necessary to get your application up an
 
 **Clone repository:**
     
-    $ (projectenv) git clone [repository_location]/projectname.git
+    $ (pjaxifiedenv) git clone https://github.com/charlon/pjaxified.git
 
 **Install dependencies:**
 
-    $ (projectenv) cd [projectname]
-    $ (projectenv) pip install -r requirements.txt
+    $ (pjaxifiedenv) cd pjaxified
+    $ (pjaxifiedenv) pip install -r requirements.txt
 
 **Create local.py**
     
-    $ (projectenv) cp projectname/settings/local_example.py projectname/settings/local.py
+    $ (pjaxifiedenv) cp pjaxified/settings/local_example.py pjaxified/settings/local.py
 
 **Set environment variable for local settings into terminal:**
 
-    $ (projectenv) export DJANGO_SETTINGS_MODULE=projectname.settings.local
+    $ (pjaxifiedenv) export DJANGO_SETTINGS_MODULE=pjaxified.settings.local
 
 **Update local.py settings**
 
@@ -44,7 +44,7 @@ Generate a secret key for your project using the URL provided
 
 **Test your server:**
     
-    $ (projectenv) python manage.py runserver 0.0.0.0:8000
+    $ (pjaxifiedenv) python manage.py runserver 0.0.0.0:8000
     
     
 **It worked!** You should see the Django server running when viewing http://localhost:8000
@@ -54,10 +54,10 @@ Generate a secret key for your project using the URL provided
 
 **Activate your virtualenv:**
     
-    $ cd projectenv
+    $ cd pjaxifiedenv
     $ source bin/activate
     
 **Run server:**
     
-    $ cd projectname
-    $ (projectenv) python manage.py runserver 0.0.0.0:8000
+    $ cd pjaxified
+    $ (pjaxifiedenv) python manage.py runserver 0.0.0.0:8000
