@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta http-equiv="cleartype" content="on">
+        
+        {% load staticfiles %}
+        {% load compress %}
+        
+        <!-- favicon and mobile device icons-->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "vendor/ico/apple-touch-icon-144x144-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "vendor/ico/apple-touch-icon-114x114-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "vendor/ico/apple-touch-icon-72x72-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static "vendor/ico/apple-touch-icon-57x57-precomposed.png" %}"> 
+        <link rel="shortcut icon" href="{% static "vendor/ico/favicon.ico" %}">
+        
+        <!-- windows8 - tile icon  & color -->
+        <meta name="msapplication-TileImage" content="{% static "vendor/ico/apple-touch-icon-144x144-precomposed.png" %}">
+        <meta name="msapplication-TileColor" content="#222222">
+        
+        <!-- ios webapps - delete if not needed -->
+        <!--
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="">
+        -->
+        <!-- critical css -->
+        {% compress css inline %}
+        <style rel="stylesheet" type="text/less">
+            body { background: lighten(aqua, 48%) !important; }
+        </style>
+        {% endcompress %}
+        
+    </head>
+    <body>
+       
+        <div id="header"> 
+            <p>welcome...</p>
+            <ul>
+                <li><a data-pjax href="/">Example</a></li>
+                <li><a data-pjax href="/test">Test</a></li>
+            </ul>
+        </div>
+        
+        
+        <!-- all pjax content will render inside of this id -->
+        <div id="pjax-container">
+            {% block content %}{% endblock %}
+        </div>            
+            
+        <div id="footer">
+            <!-- example of request.is_mobile and request.is_tablet usage in templates -->    
+            {% if request.is_mobile %}
+            <p class="text-muted credit">Courtesy of <a href="">Charlon</a> and <a href="">Craig</a>. UW-IT ACA</p>
+            {% else %}
+            <p class="text-muted credit">Courtesy of <a href="">Charlon Palacay</a> and <a href="">Craig Stimmel</a>. UW-IT ACA</p>
+            {% endif %}
+        </div>
+        
+        {% if debug %}
+        <!-- device bar (debug only) -->
+        <div id="dev_device">
+            <span class="label label-device">
+            {% if request.is_mobile %}Mobile{% elif request.is_tablet %}Tablet{% else %}Desktop{%endif %}    
+            </span>
+        </div>
+        
+        <div id="dev_viewport">
+            <span class="label label-fold">The fold</span>
+        </div>
+        {% endif %}
+        
+        <!-- normalize or bootstrap and mobile-first styles -->
+        {% compress css %}
+        
+        <link rel="stylesheet" href="{% static "vendor/css/bootstrap-3.2.0.min.css" %}">
+        <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.0.3.min.css" %}">
+        <link rel="stylesheet" href="{% static "trestle/css/devtools.less" %}" type="text/less">
+        
+        <!-- mobile styles go here -->
+            {% if not request.is_mobile and not request.is_tablet %}
+            <!-- desktop styles go here -->
+            {% endif %}
+            
+        {% endcompress %}
+         
+         
+                
+        {% if debug %}
+        <!-- lessjs (debug only) -->                
+        <!--<script src="{% static "vendor/js/less-2.0.0.min.js" %}"></script>-->
+        {% endif %}
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        
+        <!-- javascript -->
+        {% compress js %}
+        <script src="{% static "vendor/js/modernizr-2.6.2.min.js" %}"></script>
+        <!--<script src="{% static "vendor/js/jquery-1.11.0.min.js" %}"></script>-->
+        <script src="{% static "vendor/js/bootstrap-3.2.0.min.js" %}"></script>
+        <script src="{% static "vendor/js/holder-2.3.1.min.js" %}"></script>
+
+        
+        <script src="{% static "vendor/js/jquery-pjax-1.9.3.min.js" %}"></script>
+        
+        <script src="{% static "trestle/js/devtools.js" %}"></script>
+        <script src="{% static "trestle/js/example.js" %}"></script>
+        
+        <!-- app js goes here -->
+        {% endcompress %}
+        
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!--
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+        -->
+        
+    </body>
+</html>
