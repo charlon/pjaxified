@@ -44,9 +44,10 @@
                 font-size: 20px;
                 
             }
-            
-            #pjax-container {
-                padding: 1.5em;
+        
+            #content { padding: 1.5em; min-height: 430px; background: yellow; 
+                #pjax-loading { display: none; text-align: center; }
+                #pjax-container { }
             }
         </style>
         {% endcompress %}
@@ -65,10 +66,17 @@
             <li><a data-pjax href="/test/">Test</a></li>
         </ul>
         
-        <!-- all pjax content will render inside of this id -->
-        <div id="pjax-container">
-            {% block content %}{% endblock %}
-        </div>            
+        <div id="content">
+        
+            <!-- pjax loading -->
+            <div id="pjax-loading">loading...</div>
+            
+            <!-- all pjax content will render inside of this id -->
+            <div id="pjax-container">
+                {% block content %}{% endblock %}
+            </div>            
+        
+        </div>
             
         <div id="footer">
             <!-- example of request.is_mobile and request.is_tablet usage in templates -->    
@@ -113,12 +121,12 @@
         <!--<script src="{% static "vendor/js/less-2.0.0.min.js" %}"></script>-->
         {% endif %}
         
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>-->
         
         <!-- javascript -->
         {% compress js %}
         <script src="{% static "vendor/js/modernizr-2.6.2.min.js" %}"></script>
-        <!--<script src="{% static "vendor/js/jquery-1.11.0.min.js" %}"></script>-->
+        <script src="{% static "vendor/js/jquery-1.11.0.min.js" %}"></script>
         <script src="{% static "vendor/js/bootstrap-3.2.0.min.js" %}"></script>
         <script src="{% static "vendor/js/holder-2.3.1.min.js" %}"></script>
 
