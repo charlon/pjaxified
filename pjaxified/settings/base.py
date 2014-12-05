@@ -105,6 +105,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
+    
+    'pjaxified.context_processors.has_less_compiled',
+    'pjaxified.context_processors.has_google_analytics',
 )
 
 TEMPLATE_DIRS = (

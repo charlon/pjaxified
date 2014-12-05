@@ -3,6 +3,7 @@ var windowH;
 
 $(document).ready(function() {
     displayFoldIndicator();
+    
 });
 
 $( window ).resize(function() {
