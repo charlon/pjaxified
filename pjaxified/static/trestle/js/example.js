@@ -29,7 +29,7 @@ $(function() {
               // do something after 1 seconds
               $("#pjax-loading").hide();
               $('#pjax-container').show();
-        }, 1000);
+        }, 500);
 
         // cancel showing the message when the ajax call completes.
         //clearTimeout(loadingTimeout);

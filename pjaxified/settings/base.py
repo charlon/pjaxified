@@ -106,8 +106,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     
-    'pjaxified.context_processors.has_less_compiled',
-    'pjaxified.context_processors.has_google_analytics',
+    # trestle context processors
+    'pjaxified.context_processors.less_compiled',
+    'pjaxified.context_processors.google_analytics',
+    'pjaxified.context_processors.devtools_bar',
+    'pjaxified.context_processors.low_fidelity',
 )
 
 TEMPLATE_DIRS = (

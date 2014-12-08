@@ -11,8 +11,8 @@ SECRET_KEY = ''
 DEBUG = True
 INTERNAL_IPS = (
     '127.0.0.1',
-    '0.0.0.0', #add your server's ip address!
 )
+
 TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
@@ -30,4 +30,7 @@ COMPRESS_OUTPUT_DIR = ''
 #GOOGLE_ANALYTICS_KEY = "UA-XXXXXXXX-X"
 
 # enforce fidelity model
-FIDELITY_ENABLE = True
+TRESTLE_FIDELITY_LOW_ENABLED = True
+
+# devtools
+TRESTLE_DEVTOOLS_ENABLED = True
