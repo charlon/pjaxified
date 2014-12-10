@@ -52,6 +52,7 @@ coverage.xml
 *.pyc
 
 # Django settings
+local_settings.py
 local.py
 production.py
 
