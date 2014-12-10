@@ -30,7 +30,7 @@ This README documents whatever steps are necessary to get your application up an
 
 **Create local.py**
     
-    $ (pjaxifiedenv) cp pjaxified/local_example.py pjaxified/local.py
+    $ (pjaxifiedenv) cp pjaxified/local_example.py pjaxified/local_settings.py
 
 **Update local.py settings**
 
