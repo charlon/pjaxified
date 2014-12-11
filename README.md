@@ -38,12 +38,17 @@ Generate a secret key for your project using the URL provided
 
     SECRET_KEY = ''
 
-**Test your server:**
+**Create and populate the database:**
+    
+    $ (pjaxifiedenv) python manage.py syncdb
+    $ (pjaxifiedenv) python manage.py populate_db
+    
+**Run your server:**
     
     $ (pjaxifiedenv) python manage.py runserver 0.0.0.0:8000
     
     
-**It worked!** You should see the Django server running when viewing http://localhost:8000
+**It worked!** You should see the project running on http://localhost:8000
 
 
 ## Working ##
