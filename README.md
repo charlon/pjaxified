@@ -30,11 +30,7 @@ This README documents whatever steps are necessary to get your application up an
 
 **Create local.py**
     
-    $ (pjaxifiedenv) cp pjaxified/settings/local_example.py pjaxified/settings/local.py
-
-**Set environment variable for local settings into terminal:**
-
-    $ (pjaxifiedenv) export DJANGO_SETTINGS_MODULE=pjaxified.settings.local
+    $ (pjaxifiedenv) cp pjaxified/local_example.py pjaxified/local_settings.py
 
 **Update local.py settings**
 
