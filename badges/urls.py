@@ -7,11 +7,11 @@ from badges import views
 
 urlpatterns = patterns('',
         
-    # /badges/api/v1/badges 
-    url(r'^/badges$', views.BadgeList.as_view(), name='badge-list'),
+    # /api/v1/badges 
+    url(r'^badges$', views.BadgeList.as_view(), name='badge-list'),
     
-    # /badges/api/v1/badges/:id
-    url(r'^/badges/(?P<pk>[0-9]+)', views.BadgeDetail.as_view(), name='badge-detail'),
+    # /api/v1/badges/:id
+    url(r'^badges/(?P<pk>[0-9]+)', views.BadgeDetail.as_view(), name='badge-detail'),
     
     # /badges/
     url(r'^', views.home),

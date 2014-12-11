@@ -12,8 +12,8 @@ urlpatterns = patterns('',
     # include applications
     #url(r'^', include('app_name.urls')),
     
-    # route /api/v1 calls to the badges app
-    #url(r'^api/v1', include('badges.urls')),
+    # route /api/v1/ calls to the badges app
+    url(r'^api/v1/', include('badges.urls')),
     
     url(r'^badges/', include('badges.urls')),
     
