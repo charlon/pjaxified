@@ -49,16 +49,3 @@ Generate a secret key for your project using the URL provided
     
     
 **It worked!** You should see the project running on http://localhost:8000
-
-
-## Working ##
-
-**Activate your virtualenv:**
-    
-    $ cd pjaxifiedenv
-    $ source bin/activate
-    
-**Run server:**
-    
-    $ cd pjaxified
-    $ (pjaxifiedenv) python manage.py runserver 0.0.0.0:8000
