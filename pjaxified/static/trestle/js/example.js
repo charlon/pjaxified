@@ -1,3 +1,6 @@
+var processing_badges = false;
+var pathname;
+
 // document.ready shorthand
 $(function() {
     
@@ -7,15 +10,10 @@ $(function() {
     $('#pjax-container').on("pjax:send", function(e) {
         
         // if PJAX is taking longer than 250ms... show the loading message & hide existing content
-        /*
         loadingTimeout = setTimeout(function() {
             $("#pjax-loading").show();
             $('#pjax-container').hide();
         }, 250);
-        */
-        
-        $("#pjax-loading").show();
-        $('#pjax-container').hide();
               
     });
     
@@ -23,16 +21,15 @@ $(function() {
     $('#pjax-container').on("pjax:complete", function() {
                 
         // once pjax completes... hide the loading message and make sure the content is showing    
+                
+        $("#pjax-loading").hide();
+        $('#pjax-container').show();
         
-        // settimeout example to show pjax at work - remove this in favor of the loadingtimeout function above
-        setTimeout(function() {
-              // do something after 1 seconds
-              $("#pjax-loading").hide();
-              $('#pjax-container').show();
-        }, 500);
+        // handle url routes
+        handleRoutes();
 
         // cancel showing the message when the ajax call completes.
-        //clearTimeout(loadingTimeout);
+        clearTimeout(loadingTimeout);
         
     });
         
@@ -43,3 +40,81 @@ $(function() {
 
     
 }); 
+
+
+// ### GLOBAL LOAD EVENT (pjax fallback) ###############
+$(window).load(handleRoutes);
+
+// ### GLOBAL SCROLLING EVENT (pjax and non-pjax scrolling )###############
+$(window).scroll(function() {
+    
+    pathname = window.location.pathname;
+    
+    // if on "badges" page
+    if(pathname.indexOf("/badges/") >= 0) {
+                        
+        // if scrolled to the bottom... AND currently not processing any badge requests (bounce hack)
+        if($(window).scrollTop() + $(window).height() == $(document).height() && !processing_badges) {
+            
+            console.log("you scrolled to the bottom");    
+            //loadBadgeList();                 
+        }
+        
+    }
+    
+});
+
+
+
+function handleRoutes(jQuery) {
+    
+    // ROUTING FOR PJAX
+    pathname = window.location.pathname;
+        
+    // if on "badges" page
+    if(pathname.indexOf("/badges/") >= 0) {
+              
+       loadBadgeList(); 
+    }
+}
+
+// HANDLEBARS FUNCTIONS
+
+function loadBadgeList(url) {
+    
+    var protocol = window.location.protocol;
+    var host = window.location.host;
+    
+    url = protocol + '//' + host + '/api/v1/badges?format=json'
+            
+    // make an ajax request for the badgelist partial    
+    $.ajax({
+        type: 'GET',
+        url: url,
+        beforeSend:function(){
+                        
+            // show the badge loading spinner
+            $("#badge_list_loading").show();
+            
+        },    
+        success:function(data){
+                        
+            var context = { badges: data };
+                            
+            // compile handlebars template and render
+            var template = Handlebars.compile($('#tpl-badge-list').html()),
+                rendered = template(context);
+                                            
+            // paint it in the badge list container
+            $("#badge_list").append(rendered);
+                          
+            // hide the badge loading spinner
+            $("#badge_list_loading").hide();
+            
+        },
+        error:function() {
+            console.log("error fetching json...");
+        }
+    });
+    
+}

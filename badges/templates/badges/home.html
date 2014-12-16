@@ -1,23 +1,37 @@
 {% extends "base.html,base-pjax.html"|pjax:request %}
 
+{% load templatetag_handlebars %}
+
 {% block title %}PJAX Badge List{% endblock %}
 
 {% block content %}
 
 <h2>PJAX Badge List</h2>
 
-<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+<ul id="badge_list">
+    
+    <!-- django template for above-the-fold -->
+    {% for badge in badges %}
+    <li>
+        <div>{{badge.id}}, {{badge.name}}
+        <br/>description: {{badge.description }}</div>
+    </li>
+    {% endfor %}
+    
+    <li id="badge_list_loading" style="text-align:center;color:#bbb;font-size:1.25em; list-style: none; margin-top: 20px; padding: 0; margin-left: -40px;">handlebars is now loading...</li>
+    
+    <!-- handlebars template for below the fold -->
+    {% tplhandlebars "tpl-badge-list" %}
+    {{ #each badges }}
+    <li style="color:gray;">
+        <div>{{ id }}, {{ name }}
+        <br/>description: {{ description }}</div>
+    </li>
+    {{/each}}
+    {% endtplhandlebars %}
 
-<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+</ul>
 
-<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 
-<p>Nulla vitae elit libero, a pharetra augue. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-
-<p>Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper.</p>
-
-<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Aenean lacinia bibendum nulla sed consectetur. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 
 {% endblock %}
