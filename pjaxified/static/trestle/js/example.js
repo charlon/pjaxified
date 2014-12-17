@@ -66,7 +66,8 @@ $(window).scroll(function() {
             
             $("#badge_list_loading").show();
             
-            loadScrollingBadgeList();                 
+            loadScrollingBadgeList(); 
+ 
         }
         
     }
@@ -80,8 +81,9 @@ function handleRoutes() {
         
     // "badges" page was loaded
     if(pathname.indexOf("/badges/") >= 0) {
-              
-       loadRemainingBadgeList(); 
+        
+        loadRemainingBadgeList(); 
+
     }
 }
 
@@ -113,6 +115,7 @@ function loadRemainingBadgeList() {
             next_url = data.next;
             console.log(next_url);
             
+            // set the next api url
             url = next_url;
                                   
             var context = { badges: data };
@@ -145,13 +148,9 @@ function loadScrollingBadgeList() {
     var protocol = window.location.protocol;
     var host = window.location.host;
     
-    
-    
     // start on page 1 if prev is null
     //url = protocol + '//' + host + '/api/v1/badges?page=1&format=json'
-    
-    
-                        
+                            
     // make an ajax request for the badgelist partial    
     $.ajax({
         type: 'GET',
@@ -166,12 +165,7 @@ function loadScrollingBadgeList() {
             
             $("#badge_list_loading").show();
             
-            // exclude data that was originally printed -- only if on page1 (prev null)
-            if (first_page) {
-                data.results.splice(0, last_index); 
-                first_page = false;
-            }   
-            
+    
             if (!last_page) {
                 
                 next_url = data.next;
