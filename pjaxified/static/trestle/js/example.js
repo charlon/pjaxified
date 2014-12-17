@@ -45,7 +45,8 @@ $(function() {
 // ### GLOBAL LOAD EVENT (pjax fallback) ###############
 $(window).load(handleRoutes);
 
-// ### GLOBAL SCROLLING EVENT (pjax and non-pjax scrolling )###############
+
+// ### GLOBAL SCROLLING EVENT (pjax and non-pjax scrolling ) ###############
 $(window).scroll(function() {
     
     pathname = window.location.pathname;
@@ -64,14 +65,12 @@ $(window).scroll(function() {
     
 });
 
-
-
-function handleRoutes(jQuery) {
+// ### HANDLE ROUTES FOR PJAX PAGE LOADS ###############
+function handleRoutes() {
     
-    // ROUTING FOR PJAX
     pathname = window.location.pathname;
         
-    // if on "badges" page
+    // "badges" page was loaded
     if(pathname.indexOf("/badges/") >= 0) {
               
        loadBadgeList(); 
@@ -80,13 +79,13 @@ function handleRoutes(jQuery) {
 
 // HANDLEBARS FUNCTIONS
 
-function loadBadgeList(url) {
+function loadBadgeList() {
     
     var protocol = window.location.protocol;
     var host = window.location.host;
     var last_index;
     
-    last_index = $('#badge_list').attr("data-last");
+    last_index = $('#badge_list').attr("data-last-index");
     
     console.log(last_index);
      

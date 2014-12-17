@@ -26,11 +26,13 @@ class BadgeDetail(generics.RetrieveUpdateDestroyAPIView):
 
 def home(request):
     
-    # do something smart for mobile... display less badges for initial page render
+    # display less content for mobile... to increase render time
     if request.is_mobile:
-        badge_url = 'http://' + request.get_host() + '/api/v1/badges?count=10';
+        last_index = 10
+        badge_url = 'http://' + request.get_host() + '/api/v1/badges?count=' + str(last_index);
     else:
-        badge_url = 'http://' + request.get_host() + '/api/v1/badges?count=30';
+        last_index = 30
+        badge_url = 'http://' + request.get_host() + '/api/v1/badges?count=' + str(last_index);
         
     # make a call to the badge api
     badge_json = urllib.urlopen(badge_url).read()
@@ -38,9 +40,7 @@ def home(request):
     data = json.loads(badge_json)
     badges = data["results"]
     
-    #nextpage = data["next"]
-    
-    return render_to_response('badges/home.html', {'badges' : badges}, context_instance=RequestContext(request))
+    return render_to_response('badges/home.html', {'badges' : badges, 'last_index' : last_index }, context_instance=RequestContext(request))
     
     
     

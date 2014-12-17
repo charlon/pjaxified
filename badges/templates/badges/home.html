@@ -8,7 +8,7 @@
 
 <h2>PJAX Badge List</h2>
 
-<ul id="badge_list">
+<ul id="badge_list" data-last-index='{{last_index}}' style='min-height: 2000px;'>
     
     <!-- django template for above-the-fold -->
     {% for badge in badges %}
