@@ -1,7 +1,10 @@
 var processing_badges = false;
 var pathname;
 var data;
-
+var first_page = true;
+var next_url;
+var last_index;
+    
 // document.ready shorthand
 $(function() {
     
@@ -62,7 +65,7 @@ $(window).scroll(function() {
             
             $("#badge_list_loading").show();
             
-            //loadBadgeList();                 
+            loadBadgeList();                 
         }
         
     }
@@ -87,14 +90,21 @@ function loadBadgeList() {
     
     var protocol = window.location.protocol;
     var host = window.location.host;
-    var last_index;
     
     last_index = $('#badge_list').attr("data-last-index");
     
-    console.log(last_index);
-     
-    url = protocol + '//' + host + '/api/v1/badges?page=1&format=json'
-            
+    // start on page 1 if prev is null
+    //url = protocol + '//' + host + '/api/v1/badges?page=1&format=json'
+    
+    if (first_page) {
+        url = 'http://curry.eplt.washington.edu:8000/api/v1/badges?page=1&format=json';
+    }
+    else {
+        url = next_url;    
+    }
+    
+    // http://curry.eplt.washington.edu:8000/api/v1/badges?page=2&format=json
+                
     // make an ajax request for the badgelist partial    
     $.ajax({
         type: 'GET',
@@ -107,9 +117,16 @@ function loadBadgeList() {
         },    
         success:function(data){
             
-            // exclude data that was originally printed
-            data.results.splice(0, last_index); 
-                                    
+            // exclude data that was originally printed -- only if on page1 (prev null)
+            if (data.previous == null) {
+                data.results.splice(0, last_index); 
+                first_page = false;
+            }   
+            
+            next_url = data.next;
+            
+            console.log(next_url);
+                                  
             var context = { badges: data };
             
             console.log(context);
