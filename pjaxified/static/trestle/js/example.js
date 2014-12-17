@@ -84,7 +84,12 @@ function loadBadgeList(url) {
     
     var protocol = window.location.protocol;
     var host = window.location.host;
+    var last_index;
     
+    last_index = $('#badge_list').attr("data-last");
+    
+    console.log(last_index);
+     
     url = protocol + '//' + host + '/api/v1/badges?format=json'
             
     // make an ajax request for the badgelist partial    
@@ -100,7 +105,7 @@ function loadBadgeList(url) {
         success:function(data){
             
             // exclude data that was originally printed
-            data.splice(0, 10); 
+            data.splice(0, last_index); 
                                     
             var context = { badges: data };
                             
