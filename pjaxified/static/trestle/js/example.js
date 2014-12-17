@@ -59,6 +59,9 @@ $(window).scroll(function() {
         if($(window).scrollTop() + $(window).height() == $(document).height() && !processing_badges) {
             
             console.log("you scrolled to the bottom");    
+            
+            $("#badge_list_loading").show();
+            
             //loadBadgeList();                 
         }
         
