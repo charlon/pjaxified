@@ -1,5 +1,6 @@
 var processing_badges = false;
 var pathname;
+var data;
 
 // document.ready shorthand
 $(function() {
@@ -89,7 +90,7 @@ function loadBadgeList() {
     
     console.log(last_index);
      
-    url = protocol + '//' + host + '/api/v1/badges?format=json'
+    url = protocol + '//' + host + '/api/v1/badges?page=1&format=json'
             
     // make an ajax request for the badgelist partial    
     $.ajax({
@@ -104,9 +105,11 @@ function loadBadgeList() {
         success:function(data){
             
             // exclude data that was originally printed
-            data.splice(0, last_index); 
+            data.results.splice(0, last_index); 
                                     
             var context = { badges: data };
+            
+            console.log(context);
                             
             // compile handlebars template and render
             var template = Handlebars.compile($('#tpl-badge-list').html()),

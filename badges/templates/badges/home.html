@@ -22,7 +22,7 @@
     
     <!-- handlebars template for below the fold -->
     {% tplhandlebars "tpl-badge-list" %}
-    {{ #each badges }}
+    {{ #each badges.results }}
     <li style="color:gray;">
         <div>{{ id }}, {{ name }}
         <br/>description: {{ description }}</div>

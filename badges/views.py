@@ -13,7 +13,7 @@ class BadgeList(generics.ListCreateAPIView):
 
     queryset = Badge.objects.all()
     serializer_class = BadgeSerializer
-    #paginate_by = 100
+    paginate_by = 100
     paginate_by_param = 'count' # Allow client to override, using `?page_size=xxx`.
     #max_paginate_by = 100
     
