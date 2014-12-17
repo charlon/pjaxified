@@ -98,7 +98,10 @@ function loadBadgeList(url) {
             
         },    
         success:function(data){
-                        
+            
+            // exclude data that was originally printed
+            data.splice(0, 10); 
+                                    
             var context = { badges: data };
                             
             // compile handlebars template and render
