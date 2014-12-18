@@ -62,12 +62,17 @@ $(window).scroll(function() {
         // if scrolled to the bottom... AND currently not processing any badge requests (bounce hack)
         if($(window).scrollTop() + $(window).height() == $(document).height() && !processing_badges) {
             
-            //console.log("you scrolled to the bottom");    
-            
             $("#badge_list_loading").show();
+            processing_badges = true;
             
-            loadScrollingBadgeList(); 
- 
+            setTimeout(function() {
+                
+                  // Do something after 5 seconds
+                loadScrollingBadgeList(); 
+                processing_badges = false;
+                
+            }, 5000);
+            
         }
         
     }
@@ -82,8 +87,8 @@ function handleRoutes() {
     // "badges" page was loaded
     if(pathname.indexOf("/badges/") >= 0) {
         
+        // load the remaining badges, below-the-fold
         loadRemainingBadgeList(); 
-
     }
 }
 
@@ -113,15 +118,12 @@ function loadRemainingBadgeList() {
             data.results.splice(0, last_index); 
      
             next_url = data.next;
-            console.log(next_url);
             
-            // set the next api url
+            // set the next api url to be loaded after initial remaining badges were loaded
             url = next_url;
                                   
             var context = { badges: data };
-            
-            //console.log(context);
-                            
+                                        
             // compile handlebars template and render
             var template = Handlebars.compile($('#tpl-badge-list').html()),
                 rendered = template(context);
@@ -129,10 +131,8 @@ function loadRemainingBadgeList() {
             // paint it in the badge list container
             $("#badge_list").append(rendered);
                               
-            
             // hide the badge loading spinner
             $("#badge_list_loading").hide();
-      
             
         },
         error:function() {
@@ -148,8 +148,6 @@ function loadScrollingBadgeList() {
     var protocol = window.location.protocol;
     var host = window.location.host;
     
-    // start on page 1 if prev is null
-    //url = protocol + '//' + host + '/api/v1/badges?page=1&format=json'
                             
     // make an ajax request for the badgelist partial    
     $.ajax({
@@ -165,35 +163,29 @@ function loadScrollingBadgeList() {
             
             $("#badge_list_loading").show();
             
-    
             if (!last_page) {
-                
-                next_url = data.next;
-                console.log(next_url);
-                
-                url = next_url;
+                                
+                // set the next api url to be loaded
+                url = data.next;
                                       
                 var context = { badges: data };
-                
-                //console.log(context);
-                                
+                                                
                 // compile handlebars template and render
                 var template = Handlebars.compile($('#tpl-badge-list').html()),
                     rendered = template(context);
                                                 
                 // paint it in the badge list container
                 $("#badge_list").append(rendered);
-                              
+                
+                 // hide the badge loading spinner
+                 $("#badge_list_loading").hide();
+                          
             }
             
+            // find out if there are any more api urls to load
             if (next_url == null) {
                 last_page = true;       
             }   
-  
-            
-            // hide the badge loading spinner
-            $("#badge_list_loading").hide();
-      
             
             
         },
