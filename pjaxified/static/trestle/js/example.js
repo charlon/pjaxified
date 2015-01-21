@@ -32,7 +32,7 @@ $(function() {
         
         // handle url routes
         handleRoutes();
-
+        
         // cancel showing the message when the ajax call completes.
         clearTimeout(loadingTimeout);
         
