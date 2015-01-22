@@ -80,7 +80,7 @@ function generateAnnotations() {
 
     // Auto-numbering the notes    
     for (var i = 0; i < noteCount - 0; i++) {
-        $('.notes').append('<div class="note-holder">' + '<span class="note-count">' + (i+1) + '</span>' +'<span class="note-body">' + tn_array[i] + '</span>' + '</div');
+        $('.notes').append('<div class="note-holder">' + '<span class="note-count">' + (i+1) + '</span>' +'<span class="note-body">' + tn_array[i] + '</span><span class="note-details">view details?</span>' + '</div');
         }
 
     //metaframe_embed_comments();
