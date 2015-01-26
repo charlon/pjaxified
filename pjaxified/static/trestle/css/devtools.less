@@ -20,6 +20,8 @@
 } 
 
 #dev_sidebar { position: fixed; width: 300px; background: #444; top:0; right: -300px; bottom: 0; overflow: auto; font-size: .85rem; color: #fff;
+    
+    li { margin-bottom: 10px; }
 }
 
 // sidebar is showing
@@ -36,12 +38,18 @@
 	font-size: 12px;
 	line-height: 20px;
 }
-.dev-sidebar {
+
+.dev-sidebar { 
+    
+    h5 { color: #aaa; }
+    
+    ol, ul { list-style: none; margin-left: 0; padding-left: 0; }
+
     .dev-annotate { background: rgba(194, 151, 66, 0.2); position: relative; }
     .dev-notes-anchor { display: inline-block;}
     
     .note-holder { margin-bottom: 1em; background: rgba(194, 151, 66, 0.2); padding: 1em;
-        
+                
         .note-count {
             display:inline-block; 
             border-radius: 50%;
@@ -55,8 +63,10 @@
         	vertical-align: top;
 	    }
 	    
-	    .note-body { display: inline-block; width: 220px; }
+	    .note-section-id { display: inline-block; width: 220px; color: #ccc; font-weight: bold; line-height: 20px; }
 	    
-	    .note-details { display: block; font-size: 11px; text-align: right; color: aqua; text-decoration: underline; }
+	    .note-body { display: block; margin-top: 8px; margin-bottom: 10px; }
+	    
+	    .note-details { display: block; font-size: 11px; text-align: right; color: #ccc; text-decoration: underline; }
     }
 }
