@@ -134,7 +134,7 @@
                 <span class="label label-device">
                 Device: {% if request.is_mobile %}Mobile{% elif request.is_tablet %}Tablet{% else %}Desktop{%endif %}    
                 </span>
-                <span class="label label-sidebar"><a href="#" id="show_sidebar">show spec</a></span>
+                <span class="label label-sidebar"><a href="#" id="show_sidebar">show project</a></span>
                 </div>
             </div>
             <div id="dev_viewport">
@@ -145,25 +145,35 @@
                 
                 <div style="padding:1em">
                     
-                    <h5>SUPPORTED WORKFLOW</h5>
+                    <h1>PROJECT STATUS</h1>
+                    
+                    <h5>WORKFLOW</h5>
                     <div class="notes"></div>
                     
-                    <h5>ACCEPTANCE CRITERIA / TASKS</h5>
+                    <h5>TASKS</h5>
                     <ol style="list-style:none; margin-left:0; padding-left:0;">
                         <li><input type="checkbox"> Create a table with the following columns: Last Name, First Name, Address, Phone</li>
-                        <li style="text-decoration:line-through;"><input type="checkbox" checked="checked"> Add a level 3 heading title above the table with the label "Customers"</li>
+                        <li style="text-decoration:line-through;color:#000;"><input type="checkbox" checked="checked"> Add a level 3 heading title above the table with the label "Customers"</li>
                         <li><input type="checkbox"> The Last Name, First Name, and Phone columns should include the last name, first name, and primary phone number fields, respectively, for each customer</li>
                         <li><input type="checkbox"> The Address column should be comprised of the following fields (in this order): street, city, state (abbreviated), and zip code (5 digits only). Wrap the text to the next line at 100 characters.</li>
                         <li><input type="checkbox"> By default, order the table by customer last name (ascending)</li>
-                        <li><input type="checkbox"> Allow the table to be sorted by last name or first name</li>
-                        <li><input type="checkbox"> Add pagination at 25 rows</li>
+                        <li style="text-decoration:line-through;color:#000;"><input type="checkbox" checked="checked"> Allow the table to be sorted by last name or first name</li>
+                        <li style="text-decoration:line-through;color:#000;"><input type="checkbox" checked="checked"> Add pagination at 25 rows</li>
                     </ol>
+                    
+                    <div>
+                        <input type="text" placeholder="functional task"> <button style="color:#000;">Add task</button>
+                    </div>
                     
                     <h5>ACCEPTANCE TESTS</h5>
                     <ul>
                         <li>User can search and find a specific person</li>
                         <li>User can blah blah balaaaaaah</li>
                     </ul>
+                    <div>
+                        <input type="text" placeholder="acceptance test"> <button style="color:#000;">Add acceptance</button>
+                    </div>
+                    
                     
                 </div>
             </div> 
