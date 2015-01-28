@@ -22,7 +22,7 @@ $(document).ready(function() {
             $("#dev_device").animate({right:'310px'}, 300);
             $("#dev_viewport").animate({right:'300px'}, 300);
             
-            $(this).text("hide project")
+            $(this).text("hide projectbar")
                 
         } else {
             
@@ -34,7 +34,7 @@ $(document).ready(function() {
             $("#dev_device").animate({right:'10px'}, 300);
             $("#dev_viewport").animate({right:'0'}, 300);
             
-            $(this).text("show project")
+            $(this).text("show projectbar")
             
         }
         
