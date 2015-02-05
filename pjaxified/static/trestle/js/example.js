@@ -103,10 +103,15 @@ function handleRoutes() {
 
 function loadRemainingBadgeList() {
     
+    var protocol = window.location.protocol;
+    var host = window.location.host;
+        
     last_index = $('#badge_list').attr("data-last-index");
     
-    url = 'http://curry.eplt.washington.edu:8000/api/v1/badges?page=1&format=json';
+    //url = 'http://curry.eplt.washington.edu:8001/api/v1/badges?page=1&format=json';
     
+    url = protocol + '//' + host + '/api/v1/badges?page=1&format=json'
+        
     $.ajax({
         type: 'GET',
         url: url,
