@@ -36,9 +36,6 @@ $(function() {
         // cancel showing the message when the ajax call completes.
         clearTimeout(loadingTimeout);
         
-        // make some annotations
-        generateAnnotations();
-        
     });
         
     $('#pjax-container').on('pjax:timeout', function(event) {
@@ -93,9 +90,20 @@ function handleRoutes() {
         // load the remaining badges, below-the-fold
         loadRemainingBadgeList(); 
     }
+    // "test" page was loaded
+    else if (pathname.indexOf("/test/") >= 0) {
+        
+
+    }
+    // "home" page was loaded
+    else {
+        
+        // make some annotations
+        generateAnnotations();
     
-    // make some annotations
-    generateAnnotations();
+    }
+    
+    
 }
 
 // HANDLEBARS FUNCTIONS
