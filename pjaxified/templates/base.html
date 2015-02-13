@@ -77,6 +77,8 @@
             <link rel="stylesheet" href="{% static "trestle/css/devtools.less" %}" type="text/less">
             {% endif %}
             
+            <link rel="stylesheet" href="{% static "vendor/css/animate.css" %}">
+            
             <!-- insert your mobile styles here -->
             {% if not request.is_mobile and not request.is_tablet %}
             <!-- insert your desktop styles here -->
@@ -141,11 +143,17 @@
                 <span class="label label-fold">The fold</span>
             </div>
             
-            <div id="dev_sidebar">
+            <div id="dev_sidebar" class="animated">
                 
                 <div style="padding:1em">
                     
                     <h3>PROJECTBAR</h3>
+                    
+                    <h5>BUILDS</h5>
+                    <ul>
+                        <li>Test: <a href="#">http://test.blah.blaaaah.edu</a></li>
+                        <li>Deploy: <a href="#">http://test.blah.blaaaah.edu</a></li>
+                    </ul>
                     
                     <h5>WORKFLOWS</h5>
                     <div class="notes"></div>
